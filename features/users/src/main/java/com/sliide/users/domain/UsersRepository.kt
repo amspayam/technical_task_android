@@ -4,5 +4,6 @@ import com.sliide.remote.network.Resource
 import com.sliide.users.data.entities.UserEntity
 
 interface UsersRepository {
-    suspend fun getAllUsers(): Resource<List<UserEntity>>
+    suspend fun getAllUsers(): Resource<List<UserEntity>?>
+    suspend fun deleteUser(userId: String): Resource<Unit>
 }

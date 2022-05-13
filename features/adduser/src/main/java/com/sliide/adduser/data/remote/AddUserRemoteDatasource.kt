@@ -5,5 +5,5 @@ import com.sliide.adduser.data.entities.AddUserResponseEntity
 import com.sliide.remote.network.Resource
 
 interface AddUserRemoteDatasource {
-    suspend fun addUser(addUserRequestEntity: AddUserRequestEntity): Resource<AddUserResponseEntity>
+    suspend fun addUser(addUserRequestEntity: AddUserRequestEntity): Resource<AddUserResponseEntity?>
 }

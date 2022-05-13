@@ -11,7 +11,7 @@ interface AddUserApiServices {
 
     @POST("users")
     fun addUser(
-        @Header("Authorization") token: String,
+        @Header("Authorization") token: String = "Bearer e51e73b385fbde444487ab1ed0d87f2ec77f3c9f50e391a62980abbc4d86418a",
         @Body addUserRequestEntity: AddUserRequestEntity
     ): Call<AddUserResponseEntity>
 }

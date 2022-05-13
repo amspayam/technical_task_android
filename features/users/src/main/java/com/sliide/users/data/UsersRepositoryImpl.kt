@@ -10,7 +10,11 @@ class UsersRepositoryImpl @Inject constructor(
     private val remote: UsersRemoteDatasource
 ) : UsersRepository {
 
-    override suspend fun getAllUsers(): Resource<List<UserEntity>> {
+    override suspend fun getAllUsers(): Resource<List<UserEntity>?> {
         return remote.getUsers()
+    }
+
+    override suspend fun deleteUser(userId: String): Resource<Unit> {
+        return remote.deleteUser(userId)
     }
 }

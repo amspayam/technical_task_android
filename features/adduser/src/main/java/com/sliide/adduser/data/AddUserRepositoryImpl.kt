@@ -12,7 +12,7 @@ class AddUserRepositoryImpl @Inject constructor(
     private val remote: AddUserRemoteDatasource
 ) : AddUserRepository {
 
-    override suspend fun addUser(addUserRequestModel: AddUserRequestModel): Resource<AddUserResponseEntity> {
+    override suspend fun addUser(addUserRequestModel: AddUserRequestModel): Resource<AddUserResponseEntity?> {
         return remote.addUser(
             addUserRequestEntity = AddUserRequestEntity(
                 name = addUserRequestModel.name,

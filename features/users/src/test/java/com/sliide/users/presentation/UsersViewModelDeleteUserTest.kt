@@ -24,7 +24,7 @@ import org.junit.runners.JUnit4
 
 @ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
-class UsersViewModelGetAllUsersTest {
+class UsersViewModelDeleteUserTest {
 
     // Rules
     @get:Rule
@@ -45,8 +45,8 @@ class UsersViewModelGetAllUsersTest {
 
         // Mock for init
         coEvery {
-            usersUseCase.executeAsync(Unit)
-        } returns Resource.Success(AllUserDataProvider.getAllUsers())
+            deleteUserUseCase.executeAsync("3064")
+        } returns Resource.Success(Unit)
 
         // Initial viewModel
         usersViewModel = UsersViewModel(
@@ -57,53 +57,53 @@ class UsersViewModelGetAllUsersTest {
     }
 
     @Test
-    fun `get all users in init then useCase must execute`() = runBlocking {
+    fun `call delete user then useCase must execute`() = runBlocking {
 
         // Given
         coEvery {
-            usersUseCase.executeAsync(Unit)
-        } returns Resource.Success(AllUserDataProvider.getAllUsers())
+            deleteUserUseCase.executeAsync("3064")
+        } returns Resource.Success(Unit)
 
         // When
-        usersViewModel.getUsers()
+        usersViewModel.deleteUser("3064", "Johne Doe")
 
         // Then
         coVerify {
-            usersUseCase.executeAsync(Unit)
+            deleteUserUseCase.executeAsync("3064")
         }
 
     }
 
     @Test
-    fun `get all users in init then success response`() = runBlocking {
+    fun `call delete user then success response`() = runBlocking {
 
         // Given
         coEvery {
-            usersUseCase.executeAsync(Unit)
-        } returns Resource.Success(AllUserDataProvider.getAllUsers())
+            deleteUserUseCase.executeAsync("3064")
+        } returns Resource.Success(Unit)
 
         // When
-        usersViewModel.getUsers()
+        usersViewModel.deleteUser("3064", "Johne Doe")
 
         // Then
-        usersViewModel.usersStateViewLiveData.observeForever {
-            it.onViewData { users ->
-                assert(users.size == 4)
+        usersViewModel.deleteUserStateViewLiveData.observeForever {
+            it.onViewData { username ->
+                assert(username == "Johne Doe")
             }
         }
 
     }
 
     @Test
-    fun `get all users in init then error response`() = runBlocking {
+    fun `call delete user then error response`() = runBlocking {
 
         // Given
         coEvery {
-            usersUseCase.executeAsync(Unit)
+            deleteUserUseCase.executeAsync("3064")
         } returns Resource.Error(RestErrorResponse(500, "Error"))
 
         // When
-        usersViewModel.getUsers()
+        usersViewModel.deleteUser("3064", "Johne Doe")
 
         // Then
         usersViewModel.usersStateViewLiveData.observeForever {

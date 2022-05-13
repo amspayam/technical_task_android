@@ -9,14 +9,14 @@ import retrofit2.Response
 import kotlin.coroutines.resume
 
 sealed class Resource<out V> {
-    data class Success<V>(val value: V) : Resource<V>()
+    data class Success<V>(val value: V?) : Resource<V>()
     data class Error(val error: RestErrorResponse) : Resource<Nothing>()
 }
 
 private const val ERROR_RESPONSE_UNKNOWN = -1
 
 inline fun <R, T> Resource<T>.executeUseCase(
-    ifSuccess: (value: T) -> R,
+    ifSuccess: (value: T?) -> R,
     ifError: (error: RestErrorResponse) -> R
 ): R {
     return when (this) {
@@ -25,17 +25,17 @@ inline fun <R, T> Resource<T>.executeUseCase(
     }
 }
 
-fun <T, R> Resource<T>.map(isSuccess: (T) -> R): Resource<R> {
+fun <T, R> Resource<T>.map(isSuccess: (T?) -> R): Resource<R> {
     return when (this) {
         is Resource.Success -> Resource.Success(isSuccess.invoke(value))
         is Resource.Error -> Resource.Error(error)
     }
 }
 
-suspend fun <T, R> Call<T>.awaitResult(map: (T) -> R): Resource<R> = enqueue(map)
+suspend fun <T, R> Call<T>.awaitResult(map: (T?) -> R): Resource<R> = enqueue(map)
 
 private suspend fun <T, R> Call<T>.enqueue(
-    map: (T) -> R,
+    map: (T?) -> R,
     onSuccess: ((response: Response<T>) -> Unit)? = null,
     onFailure: ((throwable: Throwable, errorCode: Int) -> Unit)? = null,
     onCanceled: (() -> Unit)? = null
@@ -50,7 +50,7 @@ private suspend fun <T, R> Call<T>.enqueue(
                 if (response.isSuccessful) {
                     try {
                         onSuccess?.invoke(response)
-                        continuation.resume(Resource.Success(map(response.body()!!)))
+                        continuation.resume(Resource.Success(map(response.body())))
                     } catch (throwable: Throwable) {
                         handleError(response.code(), throwable)
                     }

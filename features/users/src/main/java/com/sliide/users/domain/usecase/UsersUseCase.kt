@@ -9,13 +9,14 @@ import javax.inject.Inject
 
 class UsersUseCase @Inject constructor(
     private val repository: UsersRepository
-) : AsyncSuspendUseCase<Unit, Resource<List<UserModel>>> {
+) : AsyncSuspendUseCase<Unit, Resource<List<UserModel>?>> {
 
-    override suspend fun executeAsync(rq: Unit): Resource<List<UserModel>> {
-        return repository.getAllUsers().map {
-            it.map { userEntity ->
-                userEntity.toModel()
+    override suspend fun executeAsync(rq: Unit): Resource<List<UserModel>?> {
+        return repository.getAllUsers().map { users ->
+            users?.map { user ->
+                user.toModel()
             }
         }
+
     }
 }

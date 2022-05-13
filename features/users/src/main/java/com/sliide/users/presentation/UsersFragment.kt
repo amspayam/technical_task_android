@@ -69,13 +69,36 @@ class UsersFragment : BaseFragment<UsersViewModel>(R.layout.fragment_users) {
                     binding.swipeRefresh.isRefreshing = false
                 }
         }
+
+        // Observe Users
+        viewModel.deleteUserStateViewLiveData.observe(viewLifecycleOwner) { result ->
+            result.onViewLoading { binding.swipeRefresh.isRefreshing = true }
+                .onViewData { username ->
+                    binding.swipeRefresh.isRefreshing = false
+                    showMessage(
+                        MessageMaster(
+                            type = MessageTypeEnum.TOAST,
+                            message = "$username was deleted successfully."
+                        )
+                    )
+                }
+                .onViewError { status, messages ->
+                    showMessage(
+                        MessageMaster(
+                            type = MessageTypeEnum.SNACK_BAR,
+                            message = "$status $messages"
+                        )
+                    )
+                    binding.swipeRefresh.isRefreshing = false
+                }
+        }
     }
 
     private fun showDeleteDialog(userId: String, userName: String) {
         MaterialAlertDialogBuilder(requireContext())
             .setMessage(getString(R.string.deleteQuestion, userName))
             .setPositiveButton(getString(R.string.deleteButtonLabel)) { dialog, _ ->
-                viewModel.deleteUser(userId = userId)
+                viewModel.deleteUser(userId = userId, userName = userName)
                 dialog.dismiss()
             }
             .setNegativeButton(getString(R.string.cancelButtonLabel)) { dialog, _ ->

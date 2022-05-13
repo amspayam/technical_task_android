@@ -1,5 +1,4 @@
 object Dependencies {
-    const val leakCanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
 
     // views
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"

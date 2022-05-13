@@ -1,6 +1,5 @@
 object Versions {
 
-    const val leakCanary = "2.8.1"
     const val kotlin = "1.6.21"
     const val buildTools = "7.0.3"
     const val hilt = "2.40.1"

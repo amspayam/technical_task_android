@@ -5,5 +5,5 @@ import com.sliide.adduser.domain.model.AddUserRequestModel
 import com.sliide.remote.network.Resource
 
 interface AddUserRepository {
-    suspend fun addUser(addUserRequestModel: AddUserRequestModel): Resource<AddUserResponseEntity>
+    suspend fun addUser(addUserRequestModel: AddUserRequestModel): Resource<AddUserResponseEntity?>
 }

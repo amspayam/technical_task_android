@@ -10,11 +10,11 @@ import javax.inject.Inject
 
 class AddUserUseCase @Inject constructor(
     private val repository: AddUserRepository
-) : AsyncSuspendUseCase<AddUserRequestModel, Resource<AddUserResponseModel>> {
+) : AsyncSuspendUseCase<AddUserRequestModel, Resource<AddUserResponseModel?>> {
 
-    override suspend fun executeAsync(rq: AddUserRequestModel): Resource<AddUserResponseModel> {
+    override suspend fun executeAsync(rq: AddUserRequestModel): Resource<AddUserResponseModel?> {
         return repository.addUser(addUserRequestModel = rq).map {
-            it.toModel()
+            it?.toModel()
         }
     }
 }

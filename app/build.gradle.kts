@@ -43,5 +43,4 @@ dependencies {
     implementation(project(Modules.mainModule))
     implementation(project(Modules.usersModule))
     implementation(project(Modules.adduserModule))
-    debugImplementation(Dependencies.leakCanary)
 }
