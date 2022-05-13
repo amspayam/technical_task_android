@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Splash Fragment-->
+    <string name="version">Version %1s</string>
+    <string name="sliide">Sliide</string>
+</resources>

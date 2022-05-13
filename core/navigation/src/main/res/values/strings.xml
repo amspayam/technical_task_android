@@ -1,0 +1,4 @@
+<resources>
+    <string name="splash_fragment_label">Splash</string>
+    <string name="users_fragment_label">Users</string>
+</resources>

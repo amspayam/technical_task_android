@@ -1,0 +1,3 @@
+com.sliide.remote
+string connection_time_out
+string something_went_wrong_try_again_later

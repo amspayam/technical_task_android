@@ -1,0 +1,2 @@
+int string connection_time_out 0x0
+int string something_went_wrong_try_again_later 0x0

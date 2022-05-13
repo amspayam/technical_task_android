@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sliide.iml" filepath="$PROJECT_DIR$/.idea/modules/Sliide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Sliide.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Sliide.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Sliide.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Sliide.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Sliide.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Sliide.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Sliide.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Sliide.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sliide.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/Sliide.buildSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sliide.buildSrc.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Sliide.buildSrc.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sliide.buildSrc.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Sliide.buildSrc.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/Sliide.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/Sliide.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/base/Sliide.core.base.iml" filepath="$PROJECT_DIR$/.idea/modules/core/base/Sliide.core.base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/base/Sliide.core.base.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/base/Sliide.core.base.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/base/Sliide.core.base.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/base/Sliide.core.base.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/base/Sliide.core.base.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/base/Sliide.core.base.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/components/Sliide.core.components.iml" filepath="$PROJECT_DIR$/.idea/modules/core/components/Sliide.core.components.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/components/Sliide.core.components.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/components/Sliide.core.components.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/components/Sliide.core.components.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/components/Sliide.core.components.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/components/Sliide.core.components.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/components/Sliide.core.components.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/navigation/Sliide.core.navigation.iml" filepath="$PROJECT_DIR$/.idea/modules/core/navigation/Sliide.core.navigation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/navigation/Sliide.core.navigation.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/navigation/Sliide.core.navigation.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/navigation/Sliide.core.navigation.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/navigation/Sliide.core.navigation.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/navigation/Sliide.core.navigation.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/navigation/Sliide.core.navigation.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/remote/Sliide.core.remote.iml" filepath="$PROJECT_DIR$/.idea/modules/core/remote/Sliide.core.remote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/remote/Sliide.core.remote.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/remote/Sliide.core.remote.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/remote/Sliide.core.remote.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/remote/Sliide.core.remote.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/remote/Sliide.core.remote.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/remote/Sliide.core.remote.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/Sliide.features.iml" filepath="$PROJECT_DIR$/.idea/modules/features/Sliide.features.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.iml" filepath="$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.main.iml" filepath="$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/users/Sliide.features.users.iml" filepath="$PROJECT_DIR$/.idea/modules/features/users/Sliide.features.users.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/users/Sliide.features.users.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/features/users/Sliide.features.users.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/users/Sliide.features.users.main.iml" filepath="$PROJECT_DIR$/.idea/modules/features/users/Sliide.features.users.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/users/Sliide.features.users.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/features/users/Sliide.features.users.unitTest.iml" />
+    </modules>
+  </component>
+</project>
