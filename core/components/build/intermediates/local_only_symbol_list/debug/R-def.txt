@@ -1,5 +1,10 @@
 R_DEF: Internal format may change without notice
 local
+attr? buttonType
+attr filledButton
+attr outlineButton
+attr textButton
+attr? textType
 attr? toolbarType
 color black
 color black_alpha_40
@@ -55,6 +60,7 @@ dimen spacing_zero
 drawable ic_add_24dp
 drawable ic_arrow_back_24dp
 drawable ic_close_24dp
+drawable ic_copy_24dp
 drawable ic_delete_32dp
 drawable ic_explorer_32dp
 drawable ic_favorite_24dp
@@ -73,8 +79,13 @@ drawable shape_rect_black_opacity_24dp
 drawable shape_rect_divider_8dp
 drawable shape_rect_white_24dp
 id backImageView
+id editText
 id iconImageView
+id spinnerDropDown
+id textInput
 id titleTextview
+layout component_drop_down
+layout component_edit_text
 layout component_toolbar
 style AppTheme
 style BottomSheetBackground
@@ -98,8 +109,12 @@ style Widget.AppComponents.CardView.SmallRadius
 style Widget.AppComponents.CardView.ZeroRadius
 style Widget.AppComponents.EditText.ErrorTextAppearance
 style Widget.AppComponents.EditText.FilledBox
+style Widget.AppComponents.EditText.FilledBox.DropDown
 style Widget.AppComponents.EditText.HintTextAppearance
 style Widget.AppComponents.EditText.ProgressColor
 style Widget.BottomNavigationView.ActiveButton
 style Widget.BottomNavigationView.InactiveButton
+styleable ButtonComponent android:text buttonType
+styleable DropDownComponent android:text android:hint android:drawableStart
+styleable EditTextComponent android:text android:hint android:enabled android:imeOptions android:inputType android:lines android:drawableStart textType
 styleable ToolbarComponent android:text android:background android:icon toolbarType

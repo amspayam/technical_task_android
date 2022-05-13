@@ -1,11 +1,11 @@
 package com.sliide.users.di
 
 import com.sliide.remote.di.NormalRetrofitClient
-import com.sliide.users.data.UserRepositoryImpl
+import com.sliide.users.data.UsersRepositoryImpl
 import com.sliide.users.data.remote.UsersApiServices
 import com.sliide.users.data.remote.UsersRemoteDatasource
 import com.sliide.users.data.remote.UsersRemoteDatasourceImpl
-import com.sliide.users.domain.UserRepository
+import com.sliide.users.domain.UsersRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,7 +31,7 @@ object UserModule {
     @Provides
     fun provideUsersRepository(
         remote: UsersRemoteDatasource
-    ): UserRepository {
-        return UserRepositoryImpl(remote = remote)
+    ): UsersRepository {
+        return UsersRepositoryImpl(remote = remote)
     }
 }

@@ -19,6 +19,15 @@
         android:name="com.sliide.users.presentation.UsersFragment"
         android:label="@string/users_fragment_label"
         tools:layout="@layout/fragment_users">
+        <action
+            android:id="@+id/action_usersFragment_to_addUserFragment"
+            app:destination="@id/addUserFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/addUserFragment"
+        android:name="com.sliide.adduser.presentation.AddUserFragment"
+        android:label="@string/add_user_fragment_label"
+        tools:layout="@layout/fragment_add_user" />
 
 </navigation>

@@ -25,7 +25,7 @@ class UsersViewModel @Inject constructor(
         removeAllJob()
 
         // Update view for Loading view
-        usersStateViewLiveData.value = ViewState.ViewLoading
+        usersStateViewLiveData.postValue(ViewState.ViewLoading)
         track {
             usersUseCase.executeAsync(Unit).executeUseCase({
                 usersStateViewLiveData.postValue(ViewState.ViewData(it))

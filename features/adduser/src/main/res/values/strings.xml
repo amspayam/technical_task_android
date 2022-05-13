@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="saveUser">Save user</string>
+    <string name="gender">Gender</string>
+    <string name="fieldRequired">This field is required!</string>
+</resources>

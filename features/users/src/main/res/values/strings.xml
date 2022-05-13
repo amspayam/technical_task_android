@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Delete dialog-->
-    <string name="delete_question">Are you sure you want to delete %s?</string>
-    <string name="delete_successful">Delete successful</string>
-    <string name="delete_button_label">Delete</string>
-    <string name="cancel_button_label">Cancel</string>
-    <string name="username">Username</string>
-    <string name="cancel">Cancel</string>
-    <string name="addUser">Add user</string>
+    <string name="deleteQuestion">Are you sure you want to delete %s?</string>
+    <string name="deleteSuccessful">Delete successful</string>
+    <string name="deleteButtonLabel">Delete</string>
+    <string name="cancelButtonLabel">Cancel</string>
 </resources>

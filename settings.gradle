@@ -21,3 +21,4 @@ include(':app',
         ':features:main',
         ':features:users'
 )
+include ':features:adduser'

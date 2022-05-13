@@ -1,3 +1,8 @@
+int attr buttonType 0x0
+int attr filledButton 0x0
+int attr outlineButton 0x0
+int attr textButton 0x0
+int attr textType 0x0
 int attr toolbarType 0x0
 int color black 0x0
 int color black_alpha_40 0x0
@@ -53,6 +58,7 @@ int dimen spacing_zero 0x0
 int drawable ic_add_24dp 0x0
 int drawable ic_arrow_back_24dp 0x0
 int drawable ic_close_24dp 0x0
+int drawable ic_copy_24dp 0x0
 int drawable ic_delete_32dp 0x0
 int drawable ic_explorer_32dp 0x0
 int drawable ic_favorite_24dp 0x0
@@ -71,8 +77,13 @@ int drawable shape_rect_black_opacity_24dp 0x0
 int drawable shape_rect_divider_8dp 0x0
 int drawable shape_rect_white_24dp 0x0
 int id backImageView 0x0
+int id editText 0x0
 int id iconImageView 0x0
+int id spinnerDropDown 0x0
+int id textInput 0x0
 int id titleTextview 0x0
+int layout component_drop_down 0x0
+int layout component_edit_text 0x0
 int layout component_toolbar 0x0
 int style AppTheme 0x0
 int style BottomSheetBackground 0x0
@@ -96,10 +107,27 @@ int style Widget_AppComponents_CardView_SmallRadius 0x0
 int style Widget_AppComponents_CardView_ZeroRadius 0x0
 int style Widget_AppComponents_EditText_ErrorTextAppearance 0x0
 int style Widget_AppComponents_EditText_FilledBox 0x0
+int style Widget_AppComponents_EditText_FilledBox_DropDown 0x0
 int style Widget_AppComponents_EditText_HintTextAppearance 0x0
 int style Widget_AppComponents_EditText_ProgressColor 0x0
 int style Widget_BottomNavigationView_ActiveButton 0x0
 int style Widget_BottomNavigationView_InactiveButton 0x0
+int[] styleable ButtonComponent { 0x101014f, 0x0 }
+int styleable ButtonComponent_android_text 0
+int styleable ButtonComponent_buttonType 1
+int[] styleable DropDownComponent { 0x1010392, 0x1010150, 0x101014f }
+int styleable DropDownComponent_android_drawableStart 0
+int styleable DropDownComponent_android_hint 1
+int styleable DropDownComponent_android_text 2
+int[] styleable EditTextComponent { 0x1010392, 0x101000e, 0x1010150, 0x1010264, 0x1010220, 0x1010154, 0x101014f, 0x0 }
+int styleable EditTextComponent_android_drawableStart 0
+int styleable EditTextComponent_android_enabled 1
+int styleable EditTextComponent_android_hint 2
+int styleable EditTextComponent_android_imeOptions 3
+int styleable EditTextComponent_android_inputType 4
+int styleable EditTextComponent_android_lines 5
+int styleable EditTextComponent_android_text 6
+int styleable EditTextComponent_textType 7
 int[] styleable ToolbarComponent { 0x10100d4, 0x1010002, 0x101014f, 0x0 }
 int styleable ToolbarComponent_android_background 0
 int styleable ToolbarComponent_android_icon 1

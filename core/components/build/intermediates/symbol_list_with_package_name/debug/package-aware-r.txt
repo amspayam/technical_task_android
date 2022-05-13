@@ -1,4 +1,9 @@
 com.sliide.components
+attr buttonType
+attr filledButton
+attr outlineButton
+attr textButton
+attr textType
 attr toolbarType
 color black
 color black_alpha_40
@@ -54,6 +59,7 @@ dimen spacing_zero
 drawable ic_add_24dp
 drawable ic_arrow_back_24dp
 drawable ic_close_24dp
+drawable ic_copy_24dp
 drawable ic_delete_32dp
 drawable ic_explorer_32dp
 drawable ic_favorite_24dp
@@ -72,8 +78,13 @@ drawable shape_rect_black_opacity_24dp
 drawable shape_rect_divider_8dp
 drawable shape_rect_white_24dp
 id backImageView
+id editText
 id iconImageView
+id spinnerDropDown
+id textInput
 id titleTextview
+layout component_drop_down
+layout component_edit_text
 layout component_toolbar
 style AppTheme
 style BottomSheetBackground
@@ -97,8 +108,12 @@ style Widget_AppComponents_CardView_SmallRadius
 style Widget_AppComponents_CardView_ZeroRadius
 style Widget_AppComponents_EditText_ErrorTextAppearance
 style Widget_AppComponents_EditText_FilledBox
+style Widget_AppComponents_EditText_FilledBox_DropDown
 style Widget_AppComponents_EditText_HintTextAppearance
 style Widget_AppComponents_EditText_ProgressColor
 style Widget_BottomNavigationView_ActiveButton
 style Widget_BottomNavigationView_InactiveButton
+styleable ButtonComponent android_text buttonType
+styleable DropDownComponent android_drawableStart android_hint android_text
+styleable EditTextComponent android_drawableStart android_enabled android_hint android_imeOptions android_inputType android_lines android_text textType
 styleable ToolbarComponent android_background android_icon android_text toolbarType

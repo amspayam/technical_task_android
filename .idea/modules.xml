@@ -28,6 +28,10 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/remote/Sliide.core.remote.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/remote/Sliide.core.remote.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/remote/Sliide.core.remote.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/core/remote/Sliide.core.remote.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/Sliide.features.iml" filepath="$PROJECT_DIR$/.idea/modules/features/Sliide.features.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/adduser/Sliide.features.adduser.iml" filepath="$PROJECT_DIR$/.idea/modules/features/adduser/Sliide.features.adduser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/adduser/Sliide.features.adduser.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/features/adduser/Sliide.features.adduser.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/adduser/Sliide.features.adduser.main.iml" filepath="$PROJECT_DIR$/.idea/modules/features/adduser/Sliide.features.adduser.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/adduser/Sliide.features.adduser.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/features/adduser/Sliide.features.adduser.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.iml" filepath="$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.main.iml" filepath="$PROJECT_DIR$/.idea/modules/features/main/Sliide.features.main.main.iml" />

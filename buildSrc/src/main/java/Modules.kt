@@ -5,4 +5,5 @@ object Modules {
     const val remoteModule = ":core:remote"
     const val mainModule = ":features:main"
     const val usersModule = ":features:users"
+    const val adduserModule = ":features:adduser"
 }

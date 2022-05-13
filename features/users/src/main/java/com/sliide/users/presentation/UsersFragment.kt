@@ -1,6 +1,7 @@
 package com.sliide.users.presentation
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -40,12 +41,7 @@ class UsersFragment : BaseFragment<UsersViewModel>(R.layout.fragment_users) {
 
     override fun setupToolbar() {
         binding.toolbar.setOnIconListener(onClickListener = {
-            showMessage(
-                MessageMaster(
-                    type = MessageTypeEnum.SNACK_BAR,
-                    message = "Add"
-                )
-            )
+            navigateToAddUserFragment()
         })
     }
 
@@ -77,14 +73,19 @@ class UsersFragment : BaseFragment<UsersViewModel>(R.layout.fragment_users) {
 
     private fun showDeleteDialog(userId: String, userName: String) {
         MaterialAlertDialogBuilder(requireContext())
-            .setMessage(getString(R.string.delete_question, userName))
-            .setPositiveButton(getString(R.string.delete_button_label)) { dialog, _ ->
+            .setMessage(getString(R.string.deleteQuestion, userName))
+            .setPositiveButton(getString(R.string.deleteButtonLabel)) { dialog, _ ->
                 viewModel.deleteUser(userId = userId)
                 dialog.dismiss()
             }
-            .setNegativeButton(getString(R.string.cancel_button_label)) { dialog, _ ->
+            .setNegativeButton(getString(R.string.cancelButtonLabel)) { dialog, _ ->
                 dialog.dismiss()
             }.show()
+    }
+
+    private fun navigateToAddUserFragment() {
+        val action = UsersFragmentDirections.actionUsersFragmentToAddUserFragment()
+        findNavController().navigate(action)
     }
 
 }

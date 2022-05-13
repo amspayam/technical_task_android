@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools">
+    <attr format="reference" name="filledButton"/>
+    <attr format="reference" name="outlineButton"/>
+    <attr format="reference" name="textButton"/>
     <color name="black">#000000</color>
     <color name="black_alpha_40">#65000000</color>
     <color name="blue">#006DCF</color>
@@ -57,6 +60,9 @@
         <item name="colorPrimaryDark">@color/windowsBackground</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="background">@color/windowsBackground</item>
+        <item name="textButton">@style/Widget.AppComponents.Button.Text</item>
+        <item name="outlineButton">@style/Widget.AppComponents.Button.Outline</item>
+        <item name="filledButton">@style/Widget.AppComponents.Button.Filled</item>
         <item name="android:windowSoftInputMode">adjustPan</item>
         <item name="android:statusBarColor">@color/black</item>
         <item name="android:windowLightStatusBar" ns1:targetApi="m">false</item>
@@ -181,6 +187,25 @@
         <item name="boxStrokeWidthFocused">0dp</item>
         <item name="boxBackgroundColor">@color/grey</item>
     </style>
+    <style name="Widget.AppComponents.EditText.FilledBox.DropDown" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_m</item>
+        <item name="boxCornerRadiusTopStart">@dimen/radius_m</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_m</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_m</item>
+
+        <item name="hintTextAppearance">@style/Widget.AppComponents.EditText.HintTextAppearance
+        </item>
+        <item name="errorTextAppearance">@style/Widget.AppComponents.EditText.ErrorTextAppearance
+        </item>
+        <item name="counterTextAppearance">@style/Widget.AppComponents.EditText.HintTextAppearance
+        </item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorError">@color/error</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxBackgroundColor">@color/grey</item>
+    </style>
     <style name="Widget.AppComponents.EditText.HintTextAppearance" parent="TextAppearance.AppCompat">
         <item name="android:textSize">@dimen/caption</item>
     </style>
@@ -193,6 +218,37 @@
     <style name="Widget.BottomNavigationView.InactiveButton" parent="Widget.Design.BottomNavigationView">
         <item name="android:textSize">10sp</item>
     </style>
+    <declare-styleable name="ButtonComponent">
+        <attr name="android:text"/>
+        <attr name="buttonType">
+            <flag name="fill" value="0"/>
+            <flag name="outline" value="1"/>
+            <flag name="text" value="2"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="DropDownComponent">
+        <attr name="android:text"/>
+        <attr name="android:hint"/>
+        <attr name="android:drawableStart"/>
+    </declare-styleable>
+    <declare-styleable name="EditTextComponent">
+        <attr name="android:text"/>
+        <attr name="android:hint"/>
+        <attr name="android:enabled"/>
+        <attr name="android:imeOptions"/>
+        <attr name="android:inputType"/>
+        <attr name="android:lines"/>
+        <attr name="android:drawableStart"/>
+        <attr format="flags" name="textType">
+            <flag name="date" value="0"/>
+            <flag name="password" value="1"/>
+            <flag name="currency" value="2"/>
+            <flag name="search" value="3"/>
+            <flag name="phone" value="4"/>
+            <flag name="copy" value="5"/>
+            <flag name="gold" value="6"/>
+        </attr>
+    </declare-styleable>
     <declare-styleable name="ToolbarComponent">
         <attr name="android:text"/>
         <attr name="android:background"/>
