@@ -10,13 +10,9 @@ import com.google.android.material.button.MaterialButton
 import com.sliide.components.R
 import com.sliie.components.extension.permitive.dpToPx
 import com.sliie.components.extension.permitive.string.pascalCase
+import com.sliie.components.extension.view.delayOnLifecycle
 import com.sliie.components.extension.view.gone
 import com.sliie.components.extension.view.visible
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-
 
 class ButtonComponent @JvmOverloads constructor(
     context: Context,
@@ -85,14 +81,10 @@ class ButtonComponent @JvmOverloads constructor(
     }
 
     fun stopLoading() {
-        GlobalScope.launch(context = Dispatchers.IO) {
-            delay(500)
-            launch(context = Dispatchers.Main) {
-                isEnabled = true
-                progressBar.gone()
-                button.text = text?.pascalCase()
-            }
+        this.delayOnLifecycle(500) {
+            isEnabled = true
+            progressBar.gone()
+            button.text = text?.pascalCase()
         }
-
     }
 }

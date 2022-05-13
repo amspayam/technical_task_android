@@ -10,8 +10,8 @@ import com.sliide.users.databinding.FragmentUsersBinding
 import com.sliide.users.presentation.adapter.UserAdapter
 import com.sliide.users.presentation.adapter.UserDecoration
 import com.sliie.components.base.BaseFragment
-import com.sliie.components.base.viewmodel.MessageMaster
-import com.sliie.components.base.viewmodel.MessageTypeEnum
+import com.sliie.components.components.snackbar.SnackBarComponent
+import com.sliie.components.components.snackbar.StateEnums
 import come.sliide.base.view.onViewData
 import come.sliide.base.view.onViewError
 import come.sliide.base.view.onViewLoading
@@ -60,34 +60,31 @@ class UsersFragment : BaseFragment<UsersViewModel>(R.layout.fragment_users) {
                     userAdapter.setItems(users)
                 }
                 .onViewError { status, messages ->
-                    showMessage(
-                        MessageMaster(
-                            type = MessageTypeEnum.SNACK_BAR,
-                            message = "$status $messages"
-                        )
+                    SnackBarComponent(
+                        view = binding.root,
+                        message = "$status $messages",
+                        state = StateEnums.ERROR
                     )
                     binding.swipeRefresh.isRefreshing = false
                 }
         }
 
-        // Observe Users
+        // Observe Delete User
         viewModel.deleteUserStateViewLiveData.observe(viewLifecycleOwner) { result ->
             result.onViewLoading { binding.swipeRefresh.isRefreshing = true }
                 .onViewData { username ->
                     binding.swipeRefresh.isRefreshing = false
-                    showMessage(
-                        MessageMaster(
-                            type = MessageTypeEnum.TOAST,
-                            message = "$username was deleted successfully."
-                        )
+                    SnackBarComponent(
+                        view = binding.root,
+                        message = "$username was deleted successfully.",
+                        state = StateEnums.SUCCESS
                     )
                 }
                 .onViewError { status, messages ->
-                    showMessage(
-                        MessageMaster(
-                            type = MessageTypeEnum.SNACK_BAR,
-                            message = "$status $messages"
-                        )
+                    SnackBarComponent(
+                        view = binding.root,
+                        message = "$status $messages",
+                        state = StateEnums.ERROR
                     )
                     binding.swipeRefresh.isRefreshing = false
                 }

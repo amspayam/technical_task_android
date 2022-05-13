@@ -6,7 +6,6 @@ import com.sliide.remote.network.RestErrorResponse
 import com.sliide.users.domain.usecase.DeleteUserUseCase
 import com.sliide.users.domain.usecase.UsersUseCase
 import com.sliide.users.rules.MainCoroutineRule
-import com.sliide.users.testdataprovider.AllUserDataProvider
 import come.sliide.base.view.onViewData
 import come.sliide.base.view.onViewError
 import io.mockk.coEvery

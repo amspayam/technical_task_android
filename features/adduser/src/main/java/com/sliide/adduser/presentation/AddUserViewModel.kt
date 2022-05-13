@@ -9,6 +9,7 @@ import com.sliide.remote.network.executeUseCase
 import com.sliie.components.base.viewmodel.BaseViewModel
 import com.sliie.components.base.viewmodel.MessageMaster
 import com.sliie.components.base.viewmodel.MessageTypeEnum
+import com.sliie.components.utils.SingleLiveEvent
 import come.sliide.base.view.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -19,7 +20,8 @@ class AddUserViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     // State view for request to useCase
-    val addUserStateViewLiveData = MutableLiveData<ViewState<AddUserResponseModel>>()
+    val addUserStateViewLiveData by lazy { SingleLiveEvent<ViewState<AddUserResponseModel>>() }
+    val validationLiveData by lazy { SingleLiveEvent<MessageMaster>() }
 
     fun addUser(username: String?, email: String?, gender: String?) {
         val isValid =
@@ -64,27 +66,32 @@ class AddUserViewModel @Inject constructor(
     ): Boolean {
         var isValid = true
         if (username.isNullOrEmpty()) {
-            message.value = MessageMaster(
-                type = MessageTypeEnum.VIEW,
-                messageResourceId = R.string.fieldRequired,
-                viewId = R.id.usernameEditText
-            )
+            validationLiveData.value =
+                MessageMaster(
+                    type = MessageTypeEnum.VIEW,
+                    message = "This field is required!",
+                    viewId = R.id.usernameEditText
+                )
             isValid = false
         }
         if (email.isNullOrEmpty()) {
-            message.value = MessageMaster(
-                type = MessageTypeEnum.VIEW,
-                messageResourceId = R.string.fieldRequired,
-                viewId = R.id.emailEditText
-            )
+            validationLiveData.value =
+                MessageMaster(
+                    type = MessageTypeEnum.VIEW,
+                    message = "This field is required!",
+                    viewId = R.id.emailEditText
+                )
+
             isValid = false
         }
         if (gender.isNullOrEmpty()) {
-            message.value = MessageMaster(
-                type = MessageTypeEnum.VIEW,
-                messageResourceId = R.string.fieldRequired,
-                viewId = R.id.genderDropDown
-            )
+            validationLiveData.value =
+                MessageMaster(
+                    type = MessageTypeEnum.VIEW,
+                    message = "This field is required!",
+                    viewId = R.id.genderDropDown
+                )
+
             isValid = false
         }
         return isValid

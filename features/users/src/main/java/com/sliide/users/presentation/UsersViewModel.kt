@@ -6,6 +6,7 @@ import com.sliide.users.domain.model.UserModel
 import com.sliide.users.domain.usecase.DeleteUserUseCase
 import com.sliide.users.domain.usecase.UsersUseCase
 import com.sliie.components.base.viewmodel.BaseViewModel
+import com.sliie.components.utils.SingleLiveEvent
 import come.sliide.base.view.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -16,10 +17,10 @@ class UsersViewModel @Inject constructor(
     private val deleteUserUseCase: DeleteUserUseCase
 ) : BaseViewModel() {
     // State view for request to usersUseCase
-    val usersStateViewLiveData = MutableLiveData<ViewState<List<UserModel>>>()
+    val usersStateViewLiveData by lazy { MutableLiveData<ViewState<List<UserModel>>>() }
 
     // State view for request to deleteUserUseCase
-    val deleteUserStateViewLiveData = MutableLiveData<ViewState<String>>()
+    val deleteUserStateViewLiveData by lazy { SingleLiveEvent<ViewState<String>>() }
 
     init {
         getUsers()

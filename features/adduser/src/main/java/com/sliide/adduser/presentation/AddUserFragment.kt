@@ -5,9 +5,10 @@ import androidx.fragment.app.viewModels
 import com.sliide.adduser.R
 import com.sliide.adduser.databinding.FragmentAddUserBinding
 import com.sliie.components.base.BaseFragment
-import com.sliie.components.base.viewmodel.MessageMaster
-import com.sliie.components.base.viewmodel.MessageTypeEnum
 import com.sliie.components.components.dropdown.model.DropDownModel
+import com.sliie.components.components.snackbar.SnackBarComponent
+import com.sliie.components.components.snackbar.StateEnums
+import com.sliie.components.extension.view.hideKeyboard
 import come.sliide.base.view.onViewData
 import come.sliide.base.view.onViewError
 import come.sliide.base.view.onViewLoading
@@ -46,38 +47,30 @@ class AddUserFragment : BaseFragment<AddUserViewModel>(R.layout.fragment_add_use
         viewModel.addUserStateViewLiveData.observe(viewLifecycleOwner) { result ->
             result.onViewLoading { binding.saveUserButton.startLoading() }
                 .onViewData {
-                    showMessage(
-                        MessageMaster(
-                            type = MessageTypeEnum.TOAST,
-                            message = "${it.name} was added successfully"
-                        )
+                    binding.root.hideKeyboard()
+                    SnackBarComponent(
+                        view = binding.root,
+                        message = "${it.name} was added successfully",
+                        state = StateEnums.SUCCESS
                     )
                     binding.saveUserButton.stopLoading()
                 }
                 .onViewError { status, messages ->
-                    showMessage(
-                        MessageMaster(
-                            type = MessageTypeEnum.SNACK_BAR,
-                            message = "$status $messages"
-                        )
+                    SnackBarComponent(
+                        view = binding.root,
+                        message = "$status $messages",
+                        state = StateEnums.ERROR
                     )
                     binding.saveUserButton.stopLoading()
                 }
         }
-    }
 
-    override fun showMessage(message: MessageMaster) {
-        binding.saveUserButton.stopLoading()
-        super.showMessage(message)
-        if (message.type == MessageTypeEnum.VIEW) {
-            when (message.viewId) {
-                R.id.usernameEditText -> binding.usernameEditText.setError(
-                    message.text
-                )
-                R.id.emailEditText -> binding.emailEditText.setError(
-                    message.text
-                )
-                R.id.genderDropDown -> binding.genderDropDown.setError(message.text)
+        //Observe Error
+        viewModel.validationLiveData.observe(viewLifecycleOwner) {
+            when (it.viewId) {
+                R.id.usernameEditText -> binding.usernameEditText.setError(error = it.message)
+                R.id.emailEditText -> binding.emailEditText.setError(error = it.message)
+                R.id.genderDropDown -> binding.genderDropDown.setError(error = it.message)
             }
         }
     }

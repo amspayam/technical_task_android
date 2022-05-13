@@ -1,6 +1,5 @@
 package com.sliide.adduser.testdataprovider
 
-import com.sliide.adduser.data.entities.AddUserResponseEntity
 import com.sliide.adduser.domain.model.AddUserRequestModel
 import com.sliide.adduser.domain.model.AddUserResponseModel
 
