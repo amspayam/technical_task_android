@@ -1,17 +1,17 @@
 package com.sliide.adduser.presentation
 
-import androidx.lifecycle.MutableLiveData
 import com.sliide.adduser.R
 import com.sliide.adduser.domain.model.AddUserRequestModel
 import com.sliide.adduser.domain.model.AddUserResponseModel
 import com.sliide.adduser.domain.usecase.AddUserUseCase
-import com.sliide.remote.network.executeUseCase
+import com.sliide.remote.utils.collectData
 import com.sliie.components.base.viewmodel.BaseViewModel
 import com.sliie.components.base.viewmodel.MessageMaster
 import com.sliie.components.base.viewmodel.MessageTypeEnum
 import com.sliie.components.utils.SingleLiveEvent
 import come.sliide.base.view.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
 @HiltViewModel
@@ -45,16 +45,23 @@ class AddUserViewModel @Inject constructor(
             )
 
         // Update view for Loading view
-        addUserStateViewLiveData.postValue(ViewState.ViewLoading)
         track {
-            addUserUseCase.executeAsync(requestModel).executeUseCase({ user ->
-                user?.let {
-                    addUserStateViewLiveData.postValue(ViewState.ViewData(it))
-                }
-            }, {
-                // Update view for show Error
-                addUserStateViewLiveData.postValue(ViewState.ViewError(it.message))
-            })
+            addUserUseCase(requestModel).collectLatest { resource ->
+                resource.collectData(
+                    ifSuccess = { user ->
+                        user?.let {
+                            addUserStateViewLiveData.postValue(ViewState.ViewData(it))
+                        }
+                    },
+                    ifError = {
+                        // Update view for show Error
+                        addUserStateViewLiveData.postValue(ViewState.ViewError(it.message))
+                    },
+                    ifLoading = {
+                        addUserStateViewLiveData.postValue(ViewState.ViewLoading)
+                    }
+                )
+            }
         }
 
     }

@@ -1,7 +1,7 @@
 package com.sliide.users.presentation
 
 import androidx.lifecycle.MutableLiveData
-import com.sliide.remote.network.executeUseCase
+import com.sliide.remote.utils.collectData
 import com.sliide.users.domain.model.UserModel
 import com.sliide.users.domain.usecase.DeleteUserUseCase
 import com.sliide.users.domain.usecase.UsersUseCase
@@ -9,6 +9,7 @@ import com.sliie.components.base.viewmodel.BaseViewModel
 import com.sliie.components.utils.SingleLiveEvent
 import come.sliide.base.view.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,15 +31,22 @@ class UsersViewModel @Inject constructor(
         // Remove all job
         removeAllJob()
 
-        // Update view for Loading view
-        usersStateViewLiveData.postValue(ViewState.ViewLoading)
         track {
-            usersUseCase.executeAsync(Unit).executeUseCase({ users ->
-                users?.let { usersStateViewLiveData.postValue(ViewState.ViewData(it)) }
-            }, {
-                // Update view for show Error
-                usersStateViewLiveData.postValue(ViewState.ViewError(it.message))
-            })
+            usersUseCase().collectLatest { resource ->
+                resource.collectData(
+                    ifSuccess = { users ->
+                        users?.let { usersStateViewLiveData.postValue(ViewState.ViewData(it)) }
+                    },
+                    ifError = {
+                        // Update view for show Error
+                        usersStateViewLiveData.postValue(ViewState.ViewError(it.message))
+                    },
+                    ifLoading = {
+                        // Update view for Loading view
+                        usersStateViewLiveData.postValue(ViewState.ViewLoading)
+                    }
+                )
+            }
         }
     }
 
@@ -46,16 +54,22 @@ class UsersViewModel @Inject constructor(
         // Remove all job
         removeAllJob()
 
-        // Update view for Loading view
-        deleteUserStateViewLiveData.postValue(ViewState.ViewLoading)
         track {
-            deleteUserUseCase.executeAsync(userId).executeUseCase({
-                deleteUserStateViewLiveData.postValue(ViewState.ViewData(userName))
-                getUsers()
-            }, {
-                // Update view for show Error
-                deleteUserStateViewLiveData.postValue(ViewState.ViewError(it.message))
-            })
+            deleteUserUseCase(userId).collectLatest { resource ->
+                resource.collectData(
+                    ifSuccess = {
+                        deleteUserStateViewLiveData.postValue(ViewState.ViewData(userName))
+                        getUsers()
+                    },
+                    ifError = {
+                        // Update view for show Error
+                        deleteUserStateViewLiveData.postValue(ViewState.ViewError(it.message))
+                    }, ifLoading = {
+                        // Update view for Loading view
+                        deleteUserStateViewLiveData.postValue(ViewState.ViewLoading)
+                    }
+                )
+            }
         }
     }
 }

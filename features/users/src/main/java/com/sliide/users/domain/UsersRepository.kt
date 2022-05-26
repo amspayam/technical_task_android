@@ -1,9 +1,10 @@
 package com.sliide.users.domain
 
-import com.sliide.remote.network.Resource
+import com.sliide.remote.utils.Resource
 import com.sliide.users.data.entities.UserEntity
+import kotlinx.coroutines.flow.Flow
 
 interface UsersRepository {
-    suspend fun getAllUsers(): Resource<List<UserEntity>?>
-    suspend fun deleteUser(userId: String): Resource<Unit>
+    suspend fun getAllUsers(): Flow<Resource<List<UserEntity>>>
+    suspend fun deleteUser(userId: String): Flow<Resource<Unit>>
 }

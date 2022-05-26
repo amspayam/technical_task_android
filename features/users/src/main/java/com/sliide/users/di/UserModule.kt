@@ -1,6 +1,7 @@
 package com.sliide.users.di
 
 import com.sliide.remote.di.NormalRetrofitClient
+import com.sliide.remote.scheduler.SchedulerProvider
 import com.sliide.users.data.UsersRepositoryImpl
 import com.sliide.users.data.remote.UsersApiServices
 import com.sliide.users.data.remote.UsersRemoteDatasource
@@ -20,10 +21,12 @@ object UserModule {
     @Singleton
     @Provides
     fun providesUserRemoteData(
-        @NormalRetrofitClient retrofit: Retrofit
+        @NormalRetrofitClient retrofit: Retrofit,
+        schedulerProvider: SchedulerProvider
     ): UsersRemoteDatasource {
         return UsersRemoteDatasourceImpl(
-            api = retrofit.create(UsersApiServices::class.java)
+            api = retrofit.create(UsersApiServices::class.java),
+            schedulerProvider = schedulerProvider
         )
     }
 
