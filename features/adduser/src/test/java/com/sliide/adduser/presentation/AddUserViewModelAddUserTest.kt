@@ -3,8 +3,9 @@ package com.sliide.adduser.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.sliide.adduser.domain.usecase.AddUserUseCase
 import com.sliide.adduser.testdataprovider.AddUserDataProvider
-import com.sliide.remote.network.Resource
 import com.sliide.remote.network.RestErrorResponse
+import com.sliide.remote.utils.FailureData
+import com.sliide.remote.utils.Resource
 import com.sliide.users.rules.MainCoroutineRule
 import come.sliide.base.view.onViewData
 import come.sliide.base.view.onViewError
@@ -12,6 +13,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
@@ -43,8 +45,8 @@ class AddUserViewModelAddUserTest {
 
         // Mock for init
         coEvery {
-            addUserUseCase.executeAsync(AddUserDataProvider.AddUserRequest())
-        } returns Resource.Success(AddUserDataProvider.AddUserResponse())
+            addUserUseCase(AddUserDataProvider.AddUserRequest())
+        } returns flow { Resource.Success(AddUserDataProvider.AddUserResponse()) }
 
         // Initial viewModel
         addUserViewModel = AddUserViewModel(
@@ -58,8 +60,8 @@ class AddUserViewModelAddUserTest {
 
         // Given
         coEvery {
-            addUserUseCase.executeAsync(AddUserDataProvider.AddUserRequest())
-        } returns Resource.Success(AddUserDataProvider.AddUserResponse())
+            addUserUseCase(AddUserDataProvider.AddUserRequest())
+        } returns flow { Resource.Success(AddUserDataProvider.AddUserResponse()) }
 
         // When
         addUserViewModel.addUser(
@@ -70,7 +72,7 @@ class AddUserViewModelAddUserTest {
 
         // Then
         coVerify {
-            addUserUseCase.executeAsync(AddUserDataProvider.AddUserRequest())
+            addUserUseCase(AddUserDataProvider.AddUserRequest())
         }
 
     }
@@ -80,8 +82,8 @@ class AddUserViewModelAddUserTest {
 
         // Given
         coEvery {
-            addUserUseCase.executeAsync(AddUserDataProvider.AddUserRequest())
-        } returns Resource.Success(AddUserDataProvider.AddUserResponse())
+            addUserUseCase(AddUserDataProvider.AddUserRequest())
+        } returns flow { Resource.Success(AddUserDataProvider.AddUserResponse()) }
 
         // When
         addUserViewModel.addUser(
@@ -104,8 +106,10 @@ class AddUserViewModelAddUserTest {
 
         // Given
         coEvery {
-            addUserUseCase.executeAsync(AddUserDataProvider.AddUserRequest())
-        } returns Resource.Error(RestErrorResponse(500, "Error"))
+            addUserUseCase(AddUserDataProvider.AddUserRequest())
+        } returns flow {
+            Resource.Failure(FailureData(code = 500, message = "Error"))
+        }
 
         // When
         addUserViewModel.addUser(

@@ -1,8 +1,8 @@
 package com.sliide.users.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.sliide.remote.network.Resource
-import com.sliide.remote.network.RestErrorResponse
+import com.sliide.remote.utils.FailureData
+import com.sliide.remote.utils.Resource
 import com.sliide.users.domain.usecase.DeleteUserUseCase
 import com.sliide.users.domain.usecase.UsersUseCase
 import com.sliide.users.rules.MainCoroutineRule
@@ -12,6 +12,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
@@ -44,8 +45,8 @@ class UsersViewModelDeleteUserTest {
 
         // Mock for init
         coEvery {
-            deleteUserUseCase.executeAsync("3064")
-        } returns Resource.Success(Unit)
+            deleteUserUseCase("3064")
+        } returns flow { Resource.Success(Unit) }
 
         // Initial viewModel
         usersViewModel = UsersViewModel(
@@ -60,15 +61,15 @@ class UsersViewModelDeleteUserTest {
 
         // Given
         coEvery {
-            deleteUserUseCase.executeAsync("3064")
-        } returns Resource.Success(Unit)
+            deleteUserUseCase("3064")
+        } returns flow { Resource.Success(Unit) }
 
         // When
         usersViewModel.deleteUser("3064", "Johne Doe")
 
         // Then
         coVerify {
-            deleteUserUseCase.executeAsync("3064")
+            deleteUserUseCase("3064")
         }
 
     }
@@ -78,8 +79,8 @@ class UsersViewModelDeleteUserTest {
 
         // Given
         coEvery {
-            deleteUserUseCase.executeAsync("3064")
-        } returns Resource.Success(Unit)
+            deleteUserUseCase("3064")
+        } returns flow { Resource.Success(Unit) }
 
         // When
         usersViewModel.deleteUser("3064", "Johne Doe")
@@ -98,8 +99,8 @@ class UsersViewModelDeleteUserTest {
 
         // Given
         coEvery {
-            deleteUserUseCase.executeAsync("3064")
-        } returns Resource.Error(RestErrorResponse(500, "Error"))
+            deleteUserUseCase("3064")
+        } returns flow { Resource.Failure(FailureData(code = 500, message = "Error")) }
 
         // When
         usersViewModel.deleteUser("3064", "Johne Doe")

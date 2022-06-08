@@ -1,8 +1,9 @@
 package com.sliide.users.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.sliide.remote.network.Resource
 import com.sliide.remote.network.RestErrorResponse
+import com.sliide.remote.utils.FailureData
+import com.sliide.remote.utils.Resource
 import com.sliide.users.domain.usecase.DeleteUserUseCase
 import com.sliide.users.domain.usecase.UsersUseCase
 import com.sliide.users.rules.MainCoroutineRule
@@ -13,6 +14,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
@@ -45,8 +47,8 @@ class UsersViewModelGetAllUsersTest {
 
         // Mock for init
         coEvery {
-            usersUseCase.executeAsync(Unit)
-        } returns Resource.Success(AllUserDataProvider.getAllUsers())
+            usersUseCase()
+        } returns flow { Resource.Success(AllUserDataProvider.getAllUsers()) }
 
         // Initial viewModel
         usersViewModel = UsersViewModel(
@@ -61,15 +63,15 @@ class UsersViewModelGetAllUsersTest {
 
         // Given
         coEvery {
-            usersUseCase.executeAsync(Unit)
-        } returns Resource.Success(AllUserDataProvider.getAllUsers())
+            usersUseCase()
+        } returns flow { Resource.Success(AllUserDataProvider.getAllUsers()) }
 
         // When
         usersViewModel.getUsers()
 
         // Then
         coVerify {
-            usersUseCase.executeAsync(Unit)
+            usersUseCase()
         }
 
     }
@@ -79,8 +81,8 @@ class UsersViewModelGetAllUsersTest {
 
         // Given
         coEvery {
-            usersUseCase.executeAsync(Unit)
-        } returns Resource.Success(AllUserDataProvider.getAllUsers())
+            usersUseCase()
+        } returns flow { Resource.Success(AllUserDataProvider.getAllUsers()) }
 
         // When
         usersViewModel.getUsers()
@@ -99,8 +101,8 @@ class UsersViewModelGetAllUsersTest {
 
         // Given
         coEvery {
-            usersUseCase.executeAsync(Unit)
-        } returns Resource.Error(RestErrorResponse(500, "Error"))
+            usersUseCase()
+        } returns flow { Resource.Failure(FailureData(code = 500, message = "Error"))}
 
         // When
         usersViewModel.getUsers()
