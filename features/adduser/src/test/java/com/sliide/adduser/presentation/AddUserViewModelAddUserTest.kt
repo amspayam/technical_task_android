@@ -3,7 +3,6 @@ package com.sliide.adduser.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.sliide.adduser.domain.usecase.AddUserUseCase
 import com.sliide.adduser.testdataprovider.AddUserDataProvider
-import com.sliide.remote.network.RestErrorResponse
 import com.sliide.remote.utils.FailureData
 import com.sliide.remote.utils.Resource
 import com.sliide.users.rules.MainCoroutineRule

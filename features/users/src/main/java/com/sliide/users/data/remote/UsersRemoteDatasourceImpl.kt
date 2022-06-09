@@ -20,7 +20,7 @@ class UsersRemoteDatasourceImpl(
     override suspend fun deleteUser(userId: String): Flow<Resource<Unit>> {
         return object :
             NetworkBoundResource<Unit>(schedulerProvider = schedulerProvider) {
-            override suspend fun remoteFetch() = api.deleteUser(userId = userId)
+            override suspend fun remoteFetch() = api.deleteUser(userId = userId).body()
         }.asFlow()
     }
 }

@@ -1,7 +1,6 @@
 package com.sliide.users.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.sliide.remote.network.RestErrorResponse
 import com.sliide.remote.utils.FailureData
 import com.sliide.remote.utils.Resource
 import com.sliide.users.domain.usecase.DeleteUserUseCase
